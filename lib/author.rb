@@ -1,23 +1,28 @@
-class Song 
-  attr_accessor :name, :artist
+class Author
 
-  @@all = []
+  attr_accessor :name, :posts
 
-  def initialize(name, artist=nil)
+  @@post_count = 0
+  
+  def initialize(name)
     @name = name
-    @artist = artist
-    @@all << self
+    @posts = []
   end
 
-  def artist_name
-    if self.artist
-      self.artist.name
-    else
-      nil
-    end
+  def add_post(post)
+    @posts << post
+    post.author = self
+    @@post_count += 1
   end
 
-  def self.all
-    @@all
+  def add_post_by_title(title)
+    post = Post.new(title)
+    @posts << post
+    post.author = self
+    @@post_count += 1
+  end
+
+  def self.post_count
+    @@post_count
   end
 end
