@@ -31,7 +31,7 @@ class Artist
 end
 
 
-class Song 
+class Song
   attr_accessor :name, :artist
 
   @@all = []
